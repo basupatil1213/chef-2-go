@@ -3,68 +3,32 @@
 
 Welcome to the Chef2go website repository.
 
-### Project Description
-Chef2go is a dedicated online platform designed exclusively for students, serving as a convenient all-in-one solution for culinary needs. Beyond just cooking, the platform provides students with access to premium subscription videos. A standout feature includes the opportunity to delve into a thoughtfully curated assortment of recipes crafted by chefs, offering a distinctive and enriching culinary journey. Whether students are in search of a swift meal or seeking inspiration for their culinary ventures, this platform is intricately crafted to address their diverse needs. It stands as the ultimate destination for food enthusiasts on campus.
+Chef2Go — Student Meal & Recipe Platform
 
-Key Features:
-1.Login:
-Fields: Username and Password are two fields used for authenticating the user. The username can be email id.Password must be at least 8 characters long and must have at least 1 special character and at the most 2 special characters. Password should have at least 1 number. The username and password key-value will be verified immediately when the user clicks on login button.
+Overview
+--------
+Chef2Go is a student-focused platform to discover recipes, order chef-curated meals, and access premium recipe videos.
 
-2.Signup / Register:
- Fields: Username, Password, Confirm Password. The Username can be email id.Password and Confirm Password must be at least 8 characters long and must have at least 1 special character and at the most 2 special characters. Password should have at least 1 number. Both Password and Confirm Password should be exactly matching. Once the user clicks the sign-up button, verification email link must be sent to verify the user.
+Features
+--------
+- Student authentication (signup/login)
+- Search by chef and by recipe
+- Premium subscription for video content
+- REST APIs for recipes, ingredients, and user management
 
-3.Search by Chef:
-Dive into a world of culinary creativity with the "Search by Chef" feature, showcasing a comprehensive list of recipes crafted by talented chefs.
-Students can seamlessly order directly from the featured chefs, transforming their meal experience into a personalized and chef-curated delight.
+Tech stack
+----------
+Node.js, Express, MongoDB (Mongoose), React frontend
 
-4.Search by Recipes:
-Empowering students to explore and discover new flavors, the "Search by Recipes" option allows users to find their desired dishes effortlessly.
-Place orders based on specific recipes, ensuring a tailored and satisfying dining experience.
+Running locally
+---------------
+1. npm install in frontend and backend folders
+2. Start backend and frontend separately (npm start)
 
-5.Premium Subscription Benefits:
-For students with a premium subscription, exclusive recipe videos directly from the chefs are unlocked, providing step-by-step guidance for a hands-on cooking experience.
-This premium feature enhances the platform, making it an ideal choice for students who aspire to elevate their culinary skills.
-In essence, Chef2go redefines the online food platform landscape by offering not just meals but an immersive culinary journey. It caters to the diverse needs of students, making it the go-to destination for those who appreciate the fusion of convenience, exclusive deals, and premium culinary experiences.
+Notes
+-----
+See controllers/, services/ and routes/ directories for server-side implementation details.
 
-### Run Locally
-
-Clone the project
-
-```bash
-  git clone https://github.com/info-6150-fall-2023/final-project-peri-peri
-```
-
-Go to the project directory
-
-```bash
-  use live-server extension on vs code
-```
-
-### Rest API for Recipe
-
-REST API for Recipe management
-GET /recipes
-Retrieve a list of all recipes in the database.
-POST /recipes
-Create a new recipe in the database.
-GET /recipes/{recipeId}
-Retrieve details for a specific recipe identified by recipeId.
-PUT /recipes/{recipeId}
-Update an existing recipe identified by recipeId.
-DELETE /recipes/{recipeId}
-Delete a recipe identified by recipeId.
-
-
-### User Authentication API
-The API allows users to sign up, log in, and delete their accounts. Passwords are securely hashed using bcrypt, and token-based authentication is implemented for user sessions.
-
-controllers: Contains the controller functions that handle HTTP requests and interact with the service layer.
-models: Defines the MongoDB schema for the user and exports the user model.
-services: Implements the business logic for user authentication and interacts with the MongoDB database using the user model.
-utilities: Contains utility functions such as token generation.
-routes: Defines the API routes using Express, routing HTTP requests to the corresponding controller functions.
-
-API Endpoints:
 
 POST /signup: Sign up a new user. Requires name, username, email, and password in the request body.
 POST /login: Log in a user. Requires either username or email and password in the request body.
