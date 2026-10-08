@@ -52,7 +52,7 @@ Error handling:
 
 ### Ingredient API
 
-Manages ingredients and the stores where they are available. It follows a layered structure: schema (`ingredient-model.js`), CRUD logic (`ingredient-service.js`), request handling (`ingredient-controller.js`), and routes (`ingredient-routes.js`).
+Manages ingredients and the stores where they are available. It follows a layered structure: schema (`ingredient-model.js`), CRUD logic (`ingredient-service.js`), request handling (`ingredient-controller.js`), and routes (`ingredient-route.js`).
 
 ## Object model
 
