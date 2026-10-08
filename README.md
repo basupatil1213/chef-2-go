@@ -1,71 +1,64 @@
+# Chef2Go — Student Meal & Recipe Platform
 
-# Project Title: Chef2go
+Chef2Go is a student-focused platform to discover recipes, order chef-curated meals, and access premium recipe videos. Built as a four-person team final project (INFO 6150, Fall 2023).
 
-Welcome to the Chef2go website repository.
+![Chef2Go home page](website-photo.png)
 
-Chef2Go — Student Meal & Recipe Platform
+## Features
 
-Overview
---------
-Chef2Go is a student-focused platform to discover recipes, order chef-curated meals, and access premium recipe videos.
-
-Features
---------
-- Student authentication (signup/login)
+- Student authentication (signup/login) with bcrypt-hashed passwords and token-based sessions
 - Search by chef and by recipe
-- Premium subscription for video content
-- REST APIs for recipes, ingredients, and user management
+- Premium subscription for video content (Stripe)
+- REST APIs for recipes, chefs, ingredients, search, payments, and user management
 
-Tech stack
-----------
-Node.js, Express, MongoDB (Mongoose), React frontend
+## Tech stack
 
-Running locally
----------------
-1. npm install in frontend and backend folders
-2. Start backend and frontend separately (npm start)
+- **Frontend:** React (TypeScript, Create React App) — `chef-2-go-frontend/`
+- **Backend:** Node.js, Express, MongoDB (Mongoose) — `chef-2-go-backend/` (controllers, services, routes, models)
+- **Other:** Stripe, Nodemailer
 
-Notes
------
-See controllers/, services/ and routes/ directories for server-side implementation details.
+## Running locally
 
+```bash
+git clone https://github.com/basupatil1213/chef-2-go.git
+cd chef-2-go
 
-POST /signup: Sign up a new user. Requires name, username, email, and password in the request body.
-POST /login: Log in a user. Requires either username or email and password in the request body.
-DELETE /:id: Delete a user by their ID. Requires the user ID as a parameter in the URL.
+# backend
+cd chef-2-go-backend
+npm install
+npm start          # nodemon server.js
 
-Error Handling:
+# frontend (in a second terminal)
+cd chef-2-go-frontend
+npm install
+npm start
+```
 
-Validation errors (e.g., empty fields, invalid email) return a 400 status code with an error message.
-Unauthorized errors return a 401 status code with an "Unauthorized" message.
-Internal server errors return a 500 status code with an "Internal Server Error" message.
+The backend reads its configuration (e.g. `MONGOCLOUDURL`, `JWT_SECRET`, `PORT`) from a `.env` file in `chef-2-go-backend/`.
 
-Security:
+## API overview
 
-User passwords are hashed using bcrypt for secure storage.
-Token-based authentication is implemented for user sessions.
+### User API
 
+- `POST /signup` — sign up a new user (requires name, username, email, and password)
+- `POST /login` — log in with username or email and password
+- `DELETE /:id` — delete a user by ID
 
-### REST API for Ingredient
-The Ingredient API is a Node.js-based application utilizing Express and MongoDB with Mongoose, designed to manage information about ingredients and the stores where they are available. The project follows a structured architecture with separate modules for defining the schema (ingredient-model.js), handling CRUD operations (ingredient-service.js), managing HTTP requests and responses (ingredient-controller.js), and defining API routes (ingredient-routes.js). 
+Error handling:
 
-### Object Model
+- Validation errors (e.g. empty fields, invalid email) return `400` with an error message
+- Unauthorized requests return `401` with `"Unauthorized"`
+- Internal server errors return `500` with `"Internal Server Error"`
 
-![alt text](https://github.com/info-6150-fall-2023/final-project-peri-peri/blob/main/docs/Chef2go.png)
+### Ingredient API
 
-Steps to set up Project Locally:
+Manages ingredients and the stores where they are available. It follows a layered structure: schema (`ingredient-model.js`), CRUD logic (`ingredient-service.js`), request handling (`ingredient-controller.js`), and routes (`ingredient-routes.js`).
 
-git clone url Install all dependencies locally - cmd :
-> npm install
-and run the project using:
-> GO to chef-to-go-frontend folder and open terminal and enter npm start to start front end
-> Go to chef-to-go-backend folder and open terminal and enter npm start to start backend server
-> npm start 
+## Object model
 
+![Chef2Go object model](docs/Chef2go.png)
 
-check changes with help of ide. git add . ( to add changes in your local branch) git commit -m "give approriate msg" ( cmd to stage changes) git push origin main ( cmd to push changes to global branch)
-
-## TEAM MEMBERS
+## Team
 
 - [@Basavaraj Patil](https://github.com/basupatil1213)
 - [@Bhuvan Dama Venkatesh Raj](https://github.com/BhuvanDV)
